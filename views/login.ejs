@@ -1,0 +1,32 @@
+<%- include('header.ejs') %>
+<section class="main-body">
+  <div class="login-page-text">
+      <h2 class="login-heading">Login</h2>
+      <p class="login-subtext">
+          Get personalised recommendations, manage your wishlist and much more!
+      </p>
+  </div>
+  <form action="/login" method="post" class="login-details">
+    <div class="alert alert-<%=stat%>  " role="alert">
+        <%= message %>
+      </div>
+      <div>
+          <label for="email-address">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="GuruDev@example.com" required />
+      </div>
+      <div>
+          <label for="password">Password</label>
+          <input type="password" name="pass" placeholder="Your Password" id="password" required />
+      </div>
+      <button type="submit" class="btn">Login!</button>
+  </form>
+
+  <div class="signup-call">
+      <p class="signup-text">
+          New to Oonchi Dukaan?
+          <a href="/signup" class="signup-link">Create your account now!</a>
+      </p>
+  </div>
+</section>
+</body>
+</html>

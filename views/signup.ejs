@@ -1,0 +1,54 @@
+<%- include('header.ejs') %>
+<section class="main-body">
+  <div class="login-page-text">
+      <h2 class="login-heading">Sign Up</h2>
+      <p class="login-subtext">
+          Looks like you are new here. Sign up to get started!
+      </p>
+  </div>
+  <form method="post" action="/signup" class="login-details">
+     
+      <div class="alert alert-<%=stat%> " role="alert">
+        <%= message %> 
+      </div>
+      <div>
+          <label for="name">Name</label>
+          <input type="text" id="text" name="name" placeholder="GuruDev" required class="name" />
+      </div>
+      <div>
+          <label for="city">City</label>
+          <input type="text" id="text" name="city" placeholder="Lucknow" required />
+      </div>
+      <div>
+          <label for="state">State</label>
+          <input type="text" id="text" name="state" placeholder="Uttar Pradesh" required />
+      </div>
+      <div>
+          <label for="email-address">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="GuruDev@example.com" required />
+      </div>
+      <div>
+          <label for="phone-number">Phone Number</label>
+          <input type="number" id="number" name="phone" placeholder="9999999999" required />
+      </div>
+      <div>
+          <label for="creatingpassword">Create Password</label>
+          <input type="password" name="pass" placeholder="Create a Password" id="password" required />
+      </div>
+      <div>
+          <label for="confirmingpassword">Confirm Password</label>
+          <input type="password" name="cpass" placeholder="Confirm Password" id="password" required />
+      </div>
+      <button type="submit" class="btn">Sign Up!</button>
+  </form>
+
+  <div class="signup-call">
+      <p class="signup-text">
+          Already have an account?
+          <a href="/login" class="signup-link">Login!</a>
+      </p>
+  </div>
+</section>
+</body>
+
+</html>
