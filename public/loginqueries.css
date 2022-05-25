@@ -1,0 +1,66 @@
+@media (max-width: 75em) {
+    .elements-form {
+        max-width: 60%;
+    }
+    .home-page-link:link,
+    .home-page-link:visited {
+        margin-left: 14rem;
+        /* padding: 4.8rem; */
+    }
+}
+
+@media (max-width: 69em) {
+    .home-page-link:link,
+    .home-page-link:visited {
+        margin-left: 10rem;
+    }
+    .logo-image {
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 58em) {
+    .home-page-link:link,
+    .home-page-link:visited {
+        margin-left: 6rem;
+    }
+    .main-body {
+        padding: 6.4rem;
+    }
+}
+
+@media (max-width: 47em) {
+    .home-page-link:link,
+    .home-page-link:visited {
+        margin-left: 2rem;
+    }
+    .logo-image {
+        max-width: 40%;
+    }
+}
+
+@media (max-width: 36em) {
+    .home-page-link:link,
+    .home-page-link:visited {
+        margin-left: 3rem;
+        border-radius: 1rem;
+    }
+    .main-body {
+        padding: 4.8rem;
+    }
+    .logo-image {
+        max-width: 50%;
+    }
+    html {
+        font-size: 56.25%;
+    }
+    .signup-call {
+        padding: 2.4rem;
+    }
+}
+
+@media (max-width: 29em) {
+    .logo-image {
+        max-width: 70%;
+    }
+}

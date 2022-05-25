@@ -1,0 +1,44 @@
+@media (max-width: 72em) {
+    .home-page-link {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 72em) {
+    .form-grid {
+        /* margin: 3.2rem auto 1.6rem auto; */
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 50em) {
+    .form-grid {
+        /* margin: 3.2rem auto 1.6rem auto; */
+        max-width: 80%;
+    }
+    .main-body {
+        padding: 6.4rem 3.2rem;
+    }
+    .logo-image {
+        max-width: 30%;
+    }
+    .home-page-link {
+        width: 10rem;
+    }
+    html {
+        font-size: 56.25%;
+    }
+}
+
+@media (max-width: 41em) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+    .header {
+        padding: 1.8rem;
+    }
+    .logo-image {
+        max-width: 40%;
+    }
+}
