@@ -24,7 +24,7 @@ html {
     font-size: 1.2rem;
     padding: 1.8rem 4.8rem 1.8rem 4.8rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #fde3de;
 }
@@ -62,11 +62,13 @@ html {
     text-align: center;
     text-decoration: none;
     padding: 1rem;
-    background-color: none;
-    border: #571c24 solid 2px;
+    /* background-color: none; */
+    /* border: #571c24 solid 2px; */
+    box-shadow: 0 0 0 1px #571c24 inset;
     border-radius: 500rem;
     color: #571c24;
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
+    transform: scale(100);
 }
 
 .main-body {
@@ -95,8 +97,18 @@ html {
     font-size: 1.8rem;
 }
 
+.form-grid {
+    margin: 4.8rem auto 2.4rem auto;
+    max-width: 50%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+}
+
 #email {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     padding: 0.8rem;
     /* margin-top: 2rem; */
     font-size: 2rem;
@@ -104,22 +116,18 @@ html {
     border: none;
     background-color: #fde3de;
     border-radius: 10rem;
-    margin-left: 2rem;
-}
-
-.name {
-    margin-top: 2rem;
+    /* margin-left: 2rem; */
 }
 
 #password,
 #number,
 #text {
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     border-radius: 10rem;
     background-color: #fde3de;
     padding: 0.8rem;
     font-family: "Rubik";
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     font-size: 2rem;
     border: none;
 }
@@ -151,4 +159,21 @@ html {
     border: none;
     margin-top: 2rem;
     font-family: "Rubik";
+}
+
+.footer {
+    padding: 2.4rem;
+    margin-top: 4.8rem;
+    background-color: #ddd;
+}
+
+.logo-footer {
+    max-width: 10%;
+    display: block;
+    margin: 0 auto;
+}
+
+.footer-text {
+    text-align: center;
+    padding-top: 1.2rem;
 }
