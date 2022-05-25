@@ -2,31 +2,51 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth !important;
 }
 
 body {
     font-family: "Rubik";
     background-color: #fffcfb;
+    scroll-behavior: smooth !important;
+    overflow-x: hidden;
+    /* position: relative; */
 }
 
 html {
+    overflow-x: hidden;
     font-size: 62.5%;
+    scroll-behavior: smooth !important;
+}
+
+.logo-link {
+    max-width: 15%;
 }
 
 .header-logo {
-    max-width: 20%;
+    max-width: 100%;
 }
 
 .home-header {
+    z-index: 5;
     font-size: 1.4rem;
     padding: 1.8rem 4.8rem 1.8rem 4.8rem;
     background-color: #fde3de;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.14);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    position: relative;
 }
 
 .header-elements {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-sticky {
+    width: 100%;
+    position: fixed;
 }
 
 .category-link,
@@ -186,6 +206,7 @@ html {
     font-size: 2.4rem;
     padding-left: 0.5rem;
     transform: translateY(0.6rem);
+    z-index: 2;
 }
 
 .cart-link:link,
@@ -228,6 +249,7 @@ html {
     border-radius: 1rem;
     overflow: hidden;
     transition: all 0.3s;
+    z-index: 1;
 }
 
 .product:hover {
@@ -257,4 +279,34 @@ html {
 .footer-text {
     text-align: center;
     padding-top: 1.2rem;
+}
+
+.room-set-up {
+    /* position: relative; */
+    transform: translateY(8rem);
+    opacity: 0;
+    transition: all ease 1s;
+}
+
+.section-hidden.room-set-up {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.btn-nav {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: none;
+}
+
+.btn-icon {
+    height: 4.8rem;
+    width: 4.8rem;
+    color: #571c24;
+}
+
+.btn-icon[name="close-outline"] {
+    /* visibility: hidden; */
+    display: none;
 }
