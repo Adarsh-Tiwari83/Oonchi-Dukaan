@@ -159,6 +159,14 @@ html {
     border: none;
     margin-top: 2rem;
     font-family: "Rubik";
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.btn:hover {
+    color: #571c24;
+    background-color: #fffcfb;
+    box-shadow: 0 0 0 1px #571c24 inset;
 }
 
 .footer {
