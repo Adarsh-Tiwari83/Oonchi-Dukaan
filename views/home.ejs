@@ -12,12 +12,17 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Oonchi Dukaan | Home Page</title>
+    
 </head>
+
 
 <body>
     <header class="home-header">
         <div class="header-elements">
-            <img src="Unchi.png" alt="Logo image of Oonchi Dukaan" class="header-logo" />
+            <a href="#" class="logo-link">
+
+                <img src="Unchi.png" alt="Logo image of Oonchi Dukaan" class="header-logo" />
+            </a>
             <nav class="header-categories-nav">
                 <a href="#room-set-up" class="category-link">Room Set Up</a>
                 <a href="#insects-repellants" class="category-link">Insects Repellents</a>
@@ -31,6 +36,10 @@
                 <a href="/login" class="login-link">Login</a>
                 <a href="/signup" class="signup-link">SignUp</a>
             </nav>
+            <button class="btn-nav">
+                <ion-icon name="menu-outline" class="btn-icon btn-open"></ion-icon>
+                <ion-icon name="close-outline" class="btn-icon btn-close"></ion-icon>
+            </button>
         </div>
     </header>
     <section class="hero-section">
@@ -52,7 +61,143 @@
     <section class="room-set-up firstsection" id="room-set-up">
         <h2 class="section-heading">Room Set Up</h2>
         <div class="products">
-            <div class="product">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Roomsetup"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+    <hr class="horizontal-rule">
+    <section class="room-set-up insects-repellants" id="insects-repellants">
+        <h2 class="section-heading">Insects Repellents</h2>
+        <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Insects"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+            <hr class="horizontal-rule">
+            <section class="room-set-up clothing" id="clothing">
+                <h2 class="section-heading">Clothing</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Clothing"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+            
+            <hr class="horizontal-rule">
+            <section class="room-set-up electronics" id="electronics">
+                <h2 class="section-heading">Electronics</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Electronics"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+            <hr class="horizontal-rule">
+            <section class="room-set-up toiletries" id="toiletries">
+                <h2 class="section-heading">Toiletries</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Toiletries"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+    <hr class="horizontal-rule">
+            <section class="room-set-up footwear" id="footwear">
+                <h2 class="section-heading">Footwear</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Footwear"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="/cart" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+            <hr class="horizontal-rule">
+            <section class="room-set-up miscellaneous" id="miscellaneous">
+                <h2 class="section-heading">Miscellaneous</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Miscellaneous"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+        
+                            <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
+                            <a href="#" class="buy-link">Buy Now!</a>
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
+        </div>
+    </section>
+            <!-- <div class="product">
                 <img src="mattress.png" alt="Image of a mattress" class="product-image">
                 <p class="product-name">Mattress</p>
                 <p class="price">Rs 300</p>
@@ -81,9 +226,9 @@
                     <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
                     <a href="#" class="buy-link">Buy Now!</a>
                 </div>
-            </div>
-        </div>
-    </section>
+            </div> -->
+        <!-- </div> -->
+    <!-- </section>
     <hr class="horizontal-rule">
     <section class="insects-repellants room-set-up" id="insects-repellants">
         <h2 class="section-heading">Insects Repellents</h2>
@@ -393,15 +538,70 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
     <footer class="footer">
-        <a href="/home"><img src="Unchi.png" alt="Logo of Oonchi Dukaan" class="logo-footer"></a>
+        <a href=""><img src="Unchi.png" alt="Logo of Oonchi Dukaan" class="logo-footer"></a>
         <p class="footer-text">
             Developed by GuruDev &reg;
         </p>
     </footer>
-    
-    <script src = "homescript.js"></script>
+    <!-- <script src="../public/homescript.js"></script> -->
+    <script>
+        "use strict";
+
+// *****STICKY NAVIGATION CODE****
+const header = document.querySelector("header");
+const heroSection = document.querySelector(".hero-section");
+const section1 = document.querySelector(".firstsection");
+const headerHeight = header.getBoundingClientRect();
+
+const stickyNav = function(entries) {
+    const [entry] = entries;
+    console.log(entry);
+    if (!entry.isIntersecting) {
+        header.classList.add("nav-sticky");
+        header.style.backgroundColor = "rgba(253, 227, 222, 0.7)";
+    } else {
+        header.classList.remove("nav-sticky");
+    }
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${headerHeight.height}px`,
+});
+headerObserver.observe(heroSection);
+
+//*****REVEALING SECTIONS CODE*****
+
+const revealSection = function(entries, observer) {
+    const [entry] = entries;
+    console.log(entry);
+    if (!entry.isIntersecting) return;
+    if (entry.isIntersecting) entry.target.classList.add("section-hidden");
+    observer.unobserve(entry.target);
+};
+const allSections = document.querySelectorAll(".room-set-up");
+const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0.15,
+});
+allSections.forEach(function(section) {
+    sectionObserver.observe(section);
+    section.classList.remove("section-hidden");
+});
+
+//*****MOBILE AND TABLET NAVIGATION****
+const openButton = document.querySelector(".btn-open");
+const closeButton = document.querySelector(".btn-close");
+
+openButton.addEventListener("click", function(e) {
+    header.classList.add("nav-open");
+});
+closeButton.addEventListener("click", function(e) {
+    header.classList.remove("nav-open");
+});
+    </script>
 </body>
 
 </html>
