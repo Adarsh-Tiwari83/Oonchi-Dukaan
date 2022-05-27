@@ -11,6 +11,41 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Oonchi Dukaan | Shopping Cart</title>
+    <style>
+        .home-page-link{
+            background: none;
+            text-decoration: none;
+            border: none;
+            font-family: 'Rubik';
+            cursor: pointer;
+            transition: all ease 0.2s;
+            font-size: 1.6rem;
+        }
+        .home-page-link:hover{
+            border: none;
+            text-decoration: none;
+            transform: translate(0);
+            box-shadow: 0 0 0 1px #571c24 inset;
+        }
+        .removing-item{
+            background: none;
+            border: none;
+            text-decoration: none;
+            font-family: 'Rubik';
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 1.2rem;
+            /* margin-bottom: 0.5rem; */
+            /* padding-top: 1.2rem; */
+            transition: all 0.3s;
+            
+        }
+        .removing-item:hover{
+            border-radius: 50rem;
+            box-shadow: 0 0 0 1px #571c24 inset;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +58,7 @@
             <form action="/profile" method="post">
                 <button type="submit" name="userid" value="<%=user._id%>" class="home-page-link">Back To Profile Page</button>
             </form>
-            
+           
         </aside>
     </header>
     <section class="main-body">
@@ -55,7 +90,7 @@
                             </button>
                         </form>
                         <form action="/remove" method="post">
-                            <button type="submit" name="item_pos" value="<%=[user._id,index]%> ">Remove</button>
+                            <button type="submit" name="item_pos" value="<%=[user._id,index]%>" class="removing-item">Remove</button>
                         </form>
                         </div>
                     </div>
@@ -63,10 +98,12 @@
             </div>
             <% } %>
         </div>
-        <button class="cta-btn">Proceed to Checkout</button>
-        <form action="/profile" method="post">
-            <button type="submit" name="userid" value="<%=user._id%>" class="home-page-link cta-link">Continue Shipping</button>
-        </form>
+        <!-- <div style="display: flex;"> -->
+            <button class="cta-btn" style="display: block;">Proceed to Checkout</button>
+            <form action="/profile" method="post">
+                <button type="submit" name="userid" value="<%=user._id%>" class="home-page-link cta-link" style="margin-top: 1.2rem">Continue Shopping</button>
+            </form>
+        <!-- </div> -->
     </section>
     <section class="pricing">
         <h2 class="price-head">Price Details</h2>
