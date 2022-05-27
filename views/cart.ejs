@@ -5,15 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="loginstyle.css" />
-    <link rel="stylesheet" href="signupstyle.css" />
+    <link rel="stylesheet" href="cartstyle.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Oonchi Dukaan</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>Oonchi Dukaan | Shopping Cart</title>
 </head>
 
 <body>
@@ -21,7 +18,69 @@
         <div class="logo-heading">
             <img src="Unchi.png" alt="Logo of Oonchi Dukaan" class="logo-image" />
         </div>
+
+        <aside class="home-page-button">
+            <form action="/profile" method="post">
+                <button type="submit" name="userid" value="<%=user._id%>" class="home-page-link">Back To Profile Page</button>
+            </form>
+            
+        </aside>
     </header>
-<div class="login-page-text">
-    <h2 class="login-heading">No items in your cart.</h2>
-</div>
+    <section class="main-body">
+        <div class="cart">
+            <h2 class="cart-heading">My Cart</h2>
+            <% let t_price=0; %> 
+            <% let t_qty=0; %> 
+            <% for( let index = 0; index < user.cart.length; index++ ) { %>
+                <% t_price = t_price + (user.cart[index].price)*(user.cart[index].qty) %> 
+                <% t_qty = t_qty + (user.cart[index].qty) %> 
+            <div class="item">
+                <div class="item-details">
+                    <img src="<%=user.cart[index].image%>" alt="image of mattress" class="item-img" />
+                    <div class="item-text">
+                        <h3 class="item-name"><%=user.cart[index].name%></h3>
+                        <h4 class="item-price">Price : <%=user.cart[index].price%></h4>
+                        <div class="ekline">
+                            <% if(user.cart[index].qty>1){ %>
+                                <form action="/decrease" method="post" class="removing-form">
+                                    <button type="submit" name="item_pos" value="<%=[user._id,index]%>"  class="minus btn-change">
+                                        <ion-icon name="remove-circle-outline" class="minus"></ion-icon>
+                                    </button>
+                                </form>
+                            <% } %>
+                            <input type="number" class="quantity" placeholder="<%=user.cart[index].qty%>" required />
+                            <form action="/increase" method="post" class="adding-form">
+                                <button type="submit" name="item_pos" value="<%=[user._id,index]%>" class="plus btn-change">
+                            <ion-icon name="add-circle-outline" class="plus"></ion-icon>
+                            </button>
+                        </form>
+                        <form action="/remove" method="post">
+                            <button type="submit" name="item_pos" value="<%=[user._id,index]%> ">Remove</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <button class="cta-btn">Proceed to Checkout</button>
+        <form action="/profile" method="post">
+            <button type="submit" name="userid" value="<%=user._id%>" class="home-page-link cta-link">Continue Shipping</button>
+        </form>
+    </section>
+    <section class="pricing">
+        <h2 class="price-head">Price Details</h2>
+        <div class="price-container">
+            <p class="num-items-text">Number of items</p>
+            <p class="num-items"><%= t_qty %> </p>
+            <p class="price-text">Price</p>
+            <p class="price-num">Rs <%= t_price %> </p>
+            <p class="discount-text">Discount</p>
+            <p class="discount-num">Rs 0</p>
+            <p class="total-text total">Total Amount</p>
+            <p class="total-num total">Rs <%= t_price %></p>
+        </div>
+    </section>
+</body>
+
+</html>
