@@ -6,27 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
        <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
 <!-- JavaScript Bundle with Popper -->
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="homestyle.css" />
+    <link rel="stylesheet" href="homequeries.css" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Oonchi Dukaan | Home Page</title>
     <style>
-        .cart{
-            background-color:#571c24;
+        .hero-section{
+            padding-top: 2.4rem;
         }
+        .welcome-heading{
+            font-size: 2.4rem;
+            font-weight: 300;
+            text-align: center;
+            padding-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #571c24;
+        }
+        .separation{
+            max-width: 40%;
+            /* margin-bottom: 1.8rem; */
+            color: #571c24;
+            margin: 0 auto 1.8rem auto;
+        }
+        .cart-button{
+            background: none;
+            border: none;
+            transition: all ease 0.3s;
+            padding: 1.2rem;
+            /* padding-right: 0; */
+        }
+        .cart-button:hover{
+            /* background-color: #571c24; */
+            color: #571c24;
+            border-radius: 50rem;
+            /* color: #fff; */
+            box-shadow: 0 0 0 1px #571c24 inset;
+        }
+        .cart-link{
+            background: none;
+            border: none;
+            text-decoration: underline;
+            font-family: 'Rubik';
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            transform: scale(1);
+        }
+        .cart-link:hover{
+            text-decoration: none;
+            transform: scale(1);
+        }
+
+    
     </style>
 </head>
 
 <body>
     <header class="home-header">
         <div class="header-elements">
-            <img src="Unchi.png" alt="Logo image of Oonchi Dukaan" class="header-logo" />
+            <a href="#" class="logo-link">
+
+                <img src="Unchi.png" alt="Logo image of Oonchi Dukaan" class="header-logo" />
+            </a>
             <nav class="header-categories-nav">
                 <a href="#room-set-up" class="category-link">Room Set Up</a>
                 <a href="#insects-repellants" class="category-link">Insects Repellents</a>
@@ -37,18 +86,23 @@
                 <a href="#miscellaneous" class="category-link">Miscellaneous</a>
             </nav>
             <nav class="header-links-nav">
-                <span class="greet">Welcome <%=name%></span>
-                <a href="/cart">
-                    <button type="button" class="btn btn-danger cart mx-4">
+                <form action="/cart" method="post">
+                    <button type="submit" name="cart" value="<%=user._id%>" class="cart-button">
                         <i class="fa fa-2x fa-shopping-cart" aria-hidden="true"></i>
-                        <!-- <span class="badge badge-primary cartno">0</span> -->
-                      </button>
-                      <a href="/" class="login-link">Logout</a>
+                        <span class="badge badge-primary cartno" style="color: #571c24; font-size: 1.8rem;"><%=user.cart.length%></span></button>
+                    </form>
                 </a>
             </nav>
+            <a href="/" class="login-link">Logout</a>
+            <button class="btn-nav">
+                <ion-icon name="menu-outline" class="btn-icon btn-open"></ion-icon>
+                <ion-icon name="close-outline" class="btn-icon btn-close"></ion-icon>
+            </button>
         </div>
     </header>
     <section class="hero-section">
+        <div class="welcome-heading">Welcome <%=user.name%>!</div>
+        <hr class="separation">
         <div class="hero-contents">
             <div class="hero-texts">
                 <h2 class="hero-heading">
@@ -64,349 +118,250 @@
         </div>
     </section>
     <hr class="horizontal-rule">
-    <section class="room-set-up" id="room-set-up">
+    <section class="room-set-up firstsection" id="room-set-up">
         <h2 class="section-heading">Room Set Up</h2>
         <div class="products">
-            <div class="product">
-                <img src="mattress.png" alt="Image of a mattress" class="product-image">
-                <p class="product-name">Mattress</p>
-                <p class="price">Rs 300</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="pillow.png" alt="Image of a pillow" class="product-image">
-                <p class="product-name">Pillow</p>
-                <p class="price">Rs 50</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="laptop-desk.png" alt="Image of a desk" class="product-image">
-                <p class="product-name">Laptop Desk</p>
-                <p class="price">Rs 500</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Roomsetup"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                </form>
+                                <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %>     
+                            
+                       
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
     <hr class="horizontal-rule">
-    <section class="insects-repellants room-set-up" id="insects-repellants">
+    <section class="room-set-up insects-repellants" id="insects-repellants">
         <h2 class="section-heading">Insects Repellents</h2>
         <div class="products">
-            <div class="product">
-                <img src="mosquito net.png" alt="Image of a mosquito net" class="product-image">
-                <p class="product-name">Mosquito Net</p>
-                <p class="price">Rs 80</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="mosquito Repellent.png" alt="Image of a Mosquito Repellent" class="product-image">
-                <p class="product-name">Mosquito Repellent</p>
-                <p class="price">Rs 40</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="laxmanrekhaa chalk.png" alt="Image of a laxmanrekhaa chalk" class="product-image">
-                <p class="product-name">Laxmanrekhaa Chalk</p>
-                <p class="price">Rs 15</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Insects"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
-    <hr class="horizontal-rule">
-    <section class="clothing room-set-up" id="clothing">
-        <h2 class="section-heading">Clothing</h2>
-        <div class="products">
-            <div class="product">
-                <img src="formal shirt.png" alt="Image of a formal shit" class="product-image">
-                <p class="product-name">Formal Shirt</p>
-                <p class="price">Rs 300</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="formal pants.png" alt="Image of a formal pant" class="product-image">
-                <p class="product-name">Formal Pants</p>
-                <p class="price">Rs 450</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="casual tshirt.png" alt="Image of a casual tshirt" class="product-image">
-                <p class="product-name">Casual TShirt</p>
-                <p class="price">Rs 150</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="jeans.png" alt="Image of jeans" class="product-image">
-                <p class="product-name">Jeans</p>
-                <p class="price">Rs 500</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="casual shorts.png" alt="Image of casual shorts" class="product-image">
-                <p class="product-name">Casual Shorts</p>
-                <p class="price">Rs 200</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="kurta.png" alt="Image of a kurta" class="product-image">
-                <p class="product-name">Kurta</p>
-                <p class="price">Rs 200</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="girls jeans.png" alt="Image of a girls' jeans" class="product-image">
-                <p class="product-name">Girls' Jeans</p>
-                <p class="price">Rs 600</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="girls top.png" alt="Image of a girls' top" class="product-image">
-                <p class="product-name">Girls' Top</p>
-                <p class="price">Rs 300</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="jumpsuit.png" alt="Image of a jumpsuit" class="product-image">
-                <p class="product-name">Jumpsuit</p>
-                <p class="price">Rs 700</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
+            <hr class="horizontal-rule">
+            <section class="room-set-up clothing" id="clothing">
+                <h2 class="section-heading">Clothing</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Clothing"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
-    <hr class="horizontal-rule">
-    <section class="electronics room-set-up" id="electronics">
-        <h2 class="section-heading">Electronics</h2>
-        <div class="products">
-            <div class="product">
-                <img src="iron.png" alt="Image of an iron" class="product-image">
-                <p class="product-name">Iron</p>
-                <p class="price">Rs 450</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="headsets.png" alt="Image of a headset" class="product-image">
-                <p class="product-name">Headsets</p>
-                <p class="price">Rs 600</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="power bank.png" alt="Image of a power bank" class="product-image">
-                <p class="product-name">Power Bank</p>
-                <p class="price">Rs 500</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-
+            <hr class="horizontal-rule">
+            <section class="room-set-up footwear" id="footwear">
+                <h2 class="section-heading">Footwear</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Footwear"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
-    <hr class="horizontal-rule">
-    <section class="toiletries room-set-up" id="toiletries">
-        <h2 class="section-heading">Toiletries</h2>
-        <div class="products">
-            <div class="product">
-                <img src="soap.png" alt="Image of a soap" class="product-image">
-                <p class="product-name">Soap</p>
-                <p class="price">Rs 10</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="shampoo.png" alt="Image of a shampoo bottle" class="product-image">
-                <p class="product-name">Shampoo bottle</p>
-                <p class="price">Rs 150</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="toothpaste.png" alt="Image of a toothpaste" class=" product-image ">
-                <p class="product-name ">Toothpaste</p>
-                <p class="price ">Rs 50</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="shaving equipment.png" alt="Image of shaving equipment" class=" product-image ">
-                <p class="product-name ">Shaving Equipment</p>
-                <p class="price ">Rs 200</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="sanitary pads.png" alt="Image of sanitary pads" class=" product-image ">
-                <p class="product-name ">Sanitary Pads</p>
-                <p class="price ">Rs 150</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="handwash.png" alt="Image of handwash" class=" product-image ">
-                <p class="product-name ">Handwash</p>
-                <p class="price ">Rs 80</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-
+            <hr class="horizontal-rule">
+            <section class="room-set-up electronics" id="electronics">
+                <h2 class="section-heading">Electronics</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Electronics"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
-    <hr class="horizontal-rule">
-    <section class="footwear room-set-up" id="footwear">
-        <h2 class="section-heading">Footwear</h2>
-        <div class="products">
-            <div class="product">
-                <img src="slippers.png" alt="Image of slippers" class="product-image">
-                <p class="product-name">Casual Slippers</p>
-                <p class="price">Rs 150</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="sports shoes.png" alt="Image of sports shoes" class="product-image">
-                <p class="product-name">Sports Shoes</p>
-                <p class="price">Rs 550</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="formal shoes.png" alt="Image of formal shoes" class=" product-image ">
-                <p class="product-name ">Formal Shoes</p>
-                <p class="price ">Rs 600</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-
+            <hr class="horizontal-rule">
+            <section class="room-set-up toiletries" id="toiletries">
+                <h2 class="section-heading">Toiletries</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Toiletries"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
-    <hr class="horizontal-rule">
-    <section class="miscellaneous room-set-up" id="miscellaneous">
-        <h2 class="section-heading">Miscellaneous</h2>
-        <div class="products">
-            <div class="product">
-                <img src="nailcutter.png" alt="Image of a nailcutter" class="product-image">
-                <p class="product-name">Nailcutter</p>
-                <p class="price">Rs 15</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="locks.png" alt="Image of a lock" class="product-image">
-                <p class="product-name">Lock</p>
-                <p class="price">Rs 50</p>
-                <div class="links">
-
-                    <a href="#" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></a>
-                    <a href="#" class="buy-link">Buy Now!</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="ropes.png" alt="Image of ropes" class=" product-image ">
-                <p class="product-name ">Ropes</p>
-                <p class="price ">Rs 60</p>
-                <div class="links ">
-
-                    <a href="# " class="cart-link ">Add to Cart<ion-icon name="cart-outline " class="cart-icon "></ion-icon></a>
-                    <a href="# " class="buy-link ">Buy Now!</a>
-                </div>
-            </div>
-
+            <hr class="horizontal-rule">
+            <section class="room-set-up miscellaneous" id="miscellaneous">
+                <h2 class="section-heading">Miscellaneous</h2>
+                <div class="products">
+            <% for( let index = 0; index < products.length; index++ ) { %>
+                <% if(products[index].category==="Miscellaneous"){ %>
+                    <div class="product">
+                        <img src=<%=products[index].image%>  alt="Image of a mattress" class="product-image">
+                        <p class="product-name"><%=products[index].name%></p>
+                        <p class="price">Rs <%=parseFloat(products[index].price)%></p>
+                        <div class="links">
+                            <% let a=1; %> 
+                            <% for( let i = 0; i < user.cart.length; i++ ) { %>
+                                <%  if(user.cart[i].pid==products[index]._id){  %>
+                                    <% a=0; %> 
+                                    <% break; %> 
+                                <% } %> 
+                            <% } %> 
+                            <% if(a==1){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Add to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                            <% } %> 
+                            <% if(a==0){ %> 
+                                <form action="/addcart" method="post">
+                                    <button type="submit" name="addcart" value="<%=[products[index]._id,user._id]%>" class="cart-link">Go to Cart<ion-icon name="cart-outline" class="cart-icon"></ion-icon></button>
+                                    <a href="#" class="buy-link">Buy Now!</a>
+                                </form>
+                            <% } %>  
+                        </div>
+                    </div>
+               <% } %> 
+            <% } %>
         </div>
     </section>
     <footer class="footer">
@@ -415,6 +370,62 @@
             Developed by GuruDev &reg;
         </p>
     </footer>
+    <script>
+        "use strict";
+
+// *****STICKY NAVIGATION CODE****
+const header = document.querySelector("header");
+const heroSection = document.querySelector(".hero-section");
+const section1 = document.querySelector(".firstsection");
+const headerHeight = header.getBoundingClientRect();
+
+const stickyNav = function(entries) {
+    const [entry] = entries;
+    console.log(entry);
+    if (!entry.isIntersecting) {
+        header.classList.add("nav-sticky");
+        header.style.backgroundColor = "rgba(253, 227, 222, 0.7)";
+    } else {
+        header.classList.remove("nav-sticky");
+    }
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${headerHeight.height}px`,
+});
+headerObserver.observe(heroSection);
+
+//*****REVEALING SECTIONS CODE*****
+
+const revealSection = function(entries, observer) {
+    const [entry] = entries;
+    console.log(entry);
+    if (!entry.isIntersecting) return;
+    if (entry.isIntersecting) entry.target.classList.add("section-hidden");
+    observer.unobserve(entry.target);
+};
+const allSections = document.querySelectorAll(".room-set-up");
+const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0.15,
+});
+allSections.forEach(function(section) {
+    sectionObserver.observe(section);
+    section.classList.remove("section-hidden");
+});
+
+//*****MOBILE AND TABLET NAVIGATION****
+const openButton = document.querySelector(".btn-open");
+const closeButton = document.querySelector(".btn-close");
+
+openButton.addEventListener("click", function(e) {
+    header.classList.add("nav-open");
+});
+closeButton.addEventListener("click", function(e) {
+    header.classList.remove("nav-open");
+});
+    </script>
 </body>
 
 </html>
